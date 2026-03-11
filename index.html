@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Service Desk Call Script Tool</title>
+
+<style>
+
+body{
+font-family:Segoe UI;
+background:#f5f6fa;
+margin:40px;
+}
+
+h2{
+color:#1e3a8a;
+}
+
+select{
+padding:10px;
+width:350px;
+font-size:15px;
+}
+
+.scriptBox{
+margin-top:20px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+button{
+margin-top:15px;
+padding:10px 16px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Service Desk Script Assistant</h2>
+
+<label>Select Call Script</label>
+<br><br>
+
+<select id="categorySelect">
+<option value="">Loading scripts...</option>
+</select>
+
+<div id="scriptContainer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
