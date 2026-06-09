@@ -54,57 +54,22 @@ if(!script){
     return;
 }
 
-let lines = script.Script.split(/\r?\n/);
+container.innerHTML = `
+    <div class="scriptBox">
+        <pre style="
+            white-space: pre-wrap;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+        ">${script.Script}</pre>
 
-let html = `
-    <div style="
-        background:#ffffff;
-        border:1px solid #d9d9d9;
-        border-radius:8px;
-        padding:15px;
-        margin-top:10px;
-        font-family:Arial, sans-serif;
-    ">
-`;
+        <br>
 
-lines.forEach((line,index)=>{
-
-    let clean = line.replace(/^\*\s*/,"").trim();
-
-    if(clean !== ""){
-
-        html += `
-            <div style="
-                display:flex;
-                gap:10px;
-                margin-bottom:8px;
-                line-height:1.5;
-            ">
-                <span style="
-                    font-weight:bold;
-                    min-width:25px;
-                ">
-                    ${index + 1}.
-                </span>
-                <span>${clean}</span>
-            </div>
-        `;
-    }
-
-});
-
-html += `
-    <button onclick="copyScript()" style="
-        margin-top:10px;
-        padding:8px 16px;
-        cursor:pointer;
-    ">
-        Copy Script
-    </button>
+        <button onclick="copyScript()">
+            Copy Script
+        </button>
     </div>
 `;
-
-container.innerHTML = html;
 ```
 
 }
@@ -112,17 +77,15 @@ container.innerHTML = html;
 function copyScript(){
 
 ```
-const items = document.querySelectorAll("#scriptContainer div div span:last-child");
+const selected = document.getElementById("categorySelect").value;
 
-let text = "";
+const script = scriptsData.find(x => x.Category === selected);
 
-items.forEach(item => {
+if(!script){
+    return;
+}
 
-    text += item.innerText + "\n";
-
-});
-
-navigator.clipboard.writeText(text);
+navigator.clipboard.writeText(script.Script);
 
 alert("Copied to clipboard");
 ```
